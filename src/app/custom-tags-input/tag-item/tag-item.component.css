@@ -1,0 +1,28 @@
+ .remove-button {
+	margin: 4px 0 0 5px;
+	padding: 0;
+	border: none;
+	background: 0 0;
+	cursor: pointer;
+	vertical-align: middle;
+	font: 700 16px Arial,sans-serif;
+	color: #585858;
+	float: right;
+}
+
+ .tags-input{
+	 border: 0;
+	 outline: 0;
+	 margin: 1px 0px 0px 2px;
+	 padding: 0 0 0 5px !important;
+	 float: left;
+	 height: 26px !important;;
+	 font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+ }
+ .readOnly  {
+	 color: #9a9898!important;
+	 border: 0px !important;
+ }
+ .error{
+	 color:red;
+ }

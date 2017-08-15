@@ -1,0 +1,39 @@
+
+<div class="tags-input-div">
+  <ul class="tag-list-ul">
+      <li *ngFor="let tag of tagList; let i = index" class="tag-item" [class.selected]=" i == selectedIndex && i != readonlyIndex">
+
+
+          <app-tag-item
+                  [tag]="tag"
+                  [index] = i
+                  [removeCallback]="removeTag"
+                  [tagEditCallback]="onTagEdit"
+                  [displayProperty] = "displayProperty"
+                  [readonlyIndex] = "readonlyIndex"
+          ></app-tag-item>
+
+
+      </li>
+  </ul>
+
+
+  <div>
+
+  <input
+          [(ngModel)]="newTag"
+          (keyup.enter)="addNewTag()"
+          (blur)="addNewTag()"
+          (keydown)="onKeyDown($event)"
+          type="text"
+          name="input"
+          class="tags-input tag-input-font tags-input-element"
+          placeholder="Enter value"
+          [class.error] = "errorMessage"
+  >
+
+
+</div>
+
+</div>
+<p *ngIf="errorMessage">{{ errorMessage }}</p>

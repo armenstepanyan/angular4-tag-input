@@ -1,0 +1,110 @@
+.tags-input-div{
+	-webkit-appearance: textfield;
+	padding: 1px;
+	overflow: hidden;
+	word-wrap: break-word;
+	cursor: text;
+	background-color: #fff;
+	border: 1px solid #a9a9a9;
+	box-shadow: 1px 1px 1px 0 #d3d3d3 inset;
+	height: 100%;
+	border-radius: 4px;
+}
+
+.invalid-tag{
+	color: red;
+	border: 1px solid red;
+}
+
+.tag-item{
+	margin: 2px;
+	padding: 0 5px;
+	display: inline-block;
+	float: left;
+	font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	height: 26px;
+	line-height: 25px;
+	border: 1px solid #acacac;
+	border-radius: 3px;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+
+li.tag-item.editable-tag{
+	border: 0;
+}
+
+.tag-list-ul{
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+
+.tags-input{
+	border: 0;
+	outline: 0;
+	margin: 1px 0px 0px 2px;
+	padding: 0 0 0 5px !important;
+	float: left;
+	height: 26px !important;;
+	font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+.selected{
+	background-color: #D0D0D0
+}
+
+
+
+.text-elipsis {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	max-width: 200px;
+	display: inline-block;
+	float: left;
+}
+
+
+#inputTagDiv, #inputTagItemDiv{
+	padding: 0px 5px;
+	visibility: hidden;
+	/*border: 1px solid;*/
+	position: absolute;
+	/*top:100px;*/
+	/*display: inline-block;*/
+}
+
+.tag-input-font{
+	font-size: 14px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+ .custom-taglist-error{
+	position: relative !important;
+}
+
+.tags-input.tag-input-font{
+	max-width: 350px;
+	min-width: 50px;
+}
+
+input::-webkit-credentials-auto-fill-button {
+	visibility: hidden;
+	pointer-events: none;
+	position: absolute;
+	right: 0;
+}
+
+@-moz-document url-prefix() {
+
+	.tag-item .remove-button{
+		margin: 3px 0 0 5px;
+	}
+
+}
+
+.error{
+	color:red;
+}

@@ -1,0 +1,20 @@
+
+<span *ngIf="!isEditable">
+  <span class="text-elipsis" (dblclick)="setEditable()" [class.readOnly]="index == readonlyIndex">
+              {{ tag[displayProperty] }}
+  </span>
+
+  <a class="remove-button" (click) = removeTag(index) *ngIf="index != readonlyIndex">   &times;  </a>
+</span>
+
+<input
+        *ngIf="isEditable"
+        class="tags-input tag-input-font"
+        [(ngModel)] = "currentTag"
+        (keyup.enter)="editTag()"
+        (blur)="editTag()"
+        [class.error] = "hasError"
+        autocomplete="off"
+>
+
+
