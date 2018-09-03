@@ -1,28 +1,86 @@
-# Project
+# custom-tags-input
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.3.
+Custom tags-input component angular2+
 
-## Development server
+ 
+### Installation ###
+* git clone https://github.com/armenstepanyan/angular4-tag-input.git
+* npm install
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Run ###
+`ng serve --open`
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|module`.
+### Avaible keys ###
 
-## Build
+* Left, Right arrows to select item
+* Delete, BackSpace to delete selected item
+* Double click on item for editing
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+# Usage
+```sh
+<ul>
+  <li *ngFor="let tag of tags">
+    {{ tag.email }}
+  </li>
+</ul>
 
-## Running unit tests
+<hr/>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+<div style="width: 700px;">
 
-## Running end-to-end tests
+  <app-custom-tags-input
+              *ngIf="tags"
+              [tagList]="tags"
+              displayProperty = "email"
+              [onTagAdded] = "onTagAdded"
+              [onTagRemoved] = "onTagRemoved"
+              [readonlyIndex] = "0"
+              [regex]="regex"
+  >
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-Before running the tests make sure you are serving the app via `ng serve`.
+  </app-custom-tags-input>
+</div>
+```
 
-## Further help
+  - tags           - tag array to display
+  - readonlyIndex   - disabled tag index, default -1
+  - displayProperty - tag object key (e.g. {id: 1, email: 'test@gmail.com'} )
+  - onTagRemoved    - callback function on tag remove
+  - onTagAdded      - callback function after tag added
+  - regex           - reqular expression to validate new added tags by pattern, empty - means add without validation
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+#app.component
+
+ ```code
+ export class AppComponent {
+ 
+ 
+ 
+   tags = [
+     {
+       id: 1,
+       email: 'aaa@gmail.com'
+     },
+     {
+       id: 2,
+       email: 'bbb@gmail.com'
+     }
+   ];
+ 
+   regex = /^[a-zA-Z0-9_-]+([='-.a-zA-Z0-9_]+)*@([a-zA-Z0-9](-?[a-zA-Z0-9])*\.)+[a-zA-Z]{2,}$/;
+ 
+ 
+   onTagAdded = (tag) => {
+     console.log(tag)
+   }
+ 
+   onTagRemoved = (tag) => {
+     console.log(tag)
+   }
+ 
+ 
+ }
+
+ ``` 
+ 
