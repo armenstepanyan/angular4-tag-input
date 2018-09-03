@@ -83,4 +83,4 @@ Custom tags-input component angular2+
  }
 
  ``` 
- 
+ ![screenshot_1](https://user-images.githubusercontent.com/26027467/44998236-93039c80-afbc-11e8-9ac6-8ffbbeaf2e1b.png)
