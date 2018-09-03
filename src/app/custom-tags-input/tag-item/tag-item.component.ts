@@ -1,49 +1,62 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, Output, ViewChild, Renderer, AfterViewInit, ElementRef, EventEmitter} from '@angular/core';
 
 @Component({
-  selector: 'app-tag-item',
-  templateUrl: './tag-item.component.html',
-  styleUrls: ['./tag-item.component.css']
+    selector: 'app-tag-item',
+    templateUrl: './tag-item.component.html',
+    styleUrls: ['./tag-item.component.css']
 })
-export class TagItemComponent implements OnInit {
+export class TagItemComponent implements OnInit, AfterViewInit {
 
-  @Input() tag;
-  @Input() index;
-  @Input() removeCallback: Function;
-  @Input() tagEditCallback: Function;
-  @Input() displayProperty;
-  @Input() readonlyIndex: number;
+    @Input() tag;
+    @Input() index;
+    @Input() removeCallback: Function;
+    @Input() tagEditCallback: Function;
+    @Input() displayProperty;
+    @Input() readonlyIndex: number;
 
-  isEditable: boolean = false;
-  currentTag: any;
-  hasError: boolean = false;
+    @Output() onSelectedIndexChange = new EventEmitter<number>();
 
-  constructor() { }
+    @ViewChild('editInput') editInput: ElementRef;
 
-  ngOnInit() {
-    this.currentTag = this.tag[this.displayProperty];
+    isEditable = false;
+    currentTag: any;
+    hasError = false;
 
-  }
+    constructor() {
+    }
 
-  removeTag(index: number): void{
-    this.removeCallback(index);
-  }
+    ngOnInit() {
+        this.currentTag = this.tag[this.displayProperty];
 
-  setEditable = () => {
-    if(this.index == this.readonlyIndex) return;
-    this.isEditable = true;
-  }
+    }
 
-  editTag = () => {
-      let isValid = this.tagEditCallback(this.currentTag, this.index);
-      if(isValid){
-        this.isEditable = false;
-        this.hasError = false;
-      }else{
-        this.hasError = true;
-      }
-  }
+    ngAfterViewInit() {
+    }
 
+    removeTag(index: number): void {
+        this.removeCallback(index);
+    }
+
+    setEditable = () => {
+        if (this.index === this.readonlyIndex) {
+            return
+        }
+        this.isEditable = true;
+        setTimeout(() => {
+            this.editInput.nativeElement.querySelector('input').focus();
+        }, 10);
+        this.onSelectedIndexChange.emit(-1);
+    }
+
+    editTag = () => {
+        const isValid = this.tagEditCallback(this.currentTag, this.index);
+        if (isValid) {
+            this.isEditable = false;
+            this.hasError = false;
+        } else {
+            this.hasError = true;
+        }
+    }
 
 
 }

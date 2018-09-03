@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +20,7 @@ export class AppComponent {
     }
   ];
 
+  regex = /^[a-zA-Z0-9_-]+([='-.a-zA-Z0-9_]+)*@([a-zA-Z0-9](-?[a-zA-Z0-9])*\.)+[a-zA-Z]{2,}$/;
 
   onTagAdded = (tag) => {
     console.log(tag)

@@ -11,6 +11,7 @@
                   [tagEditCallback]="onTagEdit"
                   [displayProperty] = "displayProperty"
                   [readonlyIndex] = "readonlyIndex"
+                  (onSelectedIndexChange)="onSelectedIndexChange()"
           ></app-tag-item>
 
 
@@ -30,6 +31,7 @@
           class="tags-input tag-input-font tags-input-element"
           placeholder="Enter value"
           [class.error] = "errorMessage"
+          #input
   >
 
 

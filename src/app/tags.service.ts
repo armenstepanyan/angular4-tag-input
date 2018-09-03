@@ -7,7 +7,7 @@ export class TagsService {
 
   getHotKeys = () => {
 
-    var keys = {
+    const keys = {
       backspace: 8,
       tab: 9,
       enter: 13,

@@ -1,4 +1,4 @@
-
+<div #editInput>
 <span *ngIf="!isEditable">
   <span class="text-elipsis" (dblclick)="setEditable()" [class.readOnly]="index == readonlyIndex">
               {{ tag[displayProperty] }}
@@ -17,4 +17,4 @@
         autocomplete="off"
 >
 
-
+</div>
